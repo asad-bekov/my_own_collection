@@ -1,0 +1,2 @@
+my_own_module_path: /tmp/file_from_role.txt
+my_own_module_content: "Создано ролью через кастомный модуль!"
