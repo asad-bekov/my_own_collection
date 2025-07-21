@@ -1,0 +1,9 @@
+---
+- name: Тест модуля my_own_module
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Создать файл через свой модуль
+      my_own_module:
+        path: /tmp/test_by_playbook.txt
+        content: "Тестовый запуск из playbook"
