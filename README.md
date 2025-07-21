@@ -1,101 +1,104 @@
-[![PyPI version](https://img.shields.io/pypi/v/ansible-core.svg)](https://pypi.org/project/ansible-core)
-[![Docs badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.ansible.com/ansible/latest/)
-[![Chat badge](https://img.shields.io/badge/chat-IRC-brightgreen.svg)](https://docs.ansible.com/ansible/devel/community/communication.html)
-[![Build Status](https://dev.azure.com/ansible/ansible/_apis/build/status/CI?branchName=devel)](https://dev.azure.com/ansible/ansible/_build/latest?definitionId=20&branchName=devel)
-[![Ansible Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg)](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html)
-[![Ansible mailing lists](https://img.shields.io/badge/mailing%20lists-Ansible-orange.svg)](https://docs.ansible.com/ansible/devel/community/communication.html#mailing-list-information)
-[![Repository License](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
-[![Ansible CII Best Practices certification](https://bestpractices.coreinfrastructure.org/projects/2372/badge)](https://bestpractices.coreinfrastructure.org/projects/2372)
+# Задание к занятию 6 «Создание собственных модулей»
 
-# Ansible
+>Репозиторий: hw‑27\
+>Выполнил: Асадбеков Асадбек\
+>Дата выполнения: июль 2025
 
-Ansible is a radically simple IT automation system. It handles
-configuration management, application deployment, cloud provisioning,
-ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex
-changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible [website](https://ansible.com/).
+## Оглавление
 
-## Design Principles
+* [Структура задания](#структура-задания)
+* [Этапы выполнения](#этапы-выполнения)
+  * [Установка и настройка окружения](#установка-и-настройка-окружения)
+  * [Разработка модуля](#разработка-модуля)
+  * [Тестирование модуля](#тестирование-модуля)
+  * [Создание коллекции и роли](#создание-коллекции-и-роли)
+  * [Тест установки и запуска коллекции](#тест-установки-и-запуска-коллекции)
+  * [Скриншоты (авторазметка)](#скриншоты-авторазметка)
+* [Ссылки на коллекцию и архив](#ссылки-на-коллекцию-и-архив)
 
-* Have an extremely simple setup process with a minimal learning curve.
-* Manage machines quickly and in parallel.
-* Avoid custom-agents and additional open ports, be agentless by
-  leveraging the existing SSH daemon.
-* Describe infrastructure in a language that is both machine and human
-  friendly.
-* Focus on security and easy auditability/review/rewriting of content.
-* Manage new remote machines instantly, without bootstrapping any
-  software.
-* Allow module development in any dynamic language, not just Python.
-* Be usable as non-root.
-* Be the easiest IT automation system to use, ever.
+---
 
-## Use Ansible
+## Структура задания
 
-You can install a released version of Ansible with `pip` or a package manager. See our
-[installation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) for details on installing Ansible
-on a variety of platforms.
+Реализована собственная ansible-collection с:
 
-Power users and developers can run the `devel` branch, which has the latest
-features and fixes, directly. Although it is reasonably stable, you are more likely to encounter
-breaking changes when running the `devel` branch. We recommend getting involved
-in the Ansible community if you want to run the `devel` branch.
+* Кастомным модулем для создания файла на хосте
+* Ролью, использующей этот модуль
+* Документацией и тестированием работы
 
-## Communication
+---
 
-Join the Ansible forum to ask questions, get help, and interact with the
-community.
+## Этапы выполнения
 
-* [Get Help](https://forum.ansible.com/c/help/6): Find help or share your Ansible knowledge to help others.
-  Use tags to filter and subscribe to posts, such as the following:
-  * Posts tagged with [ansible](https://forum.ansible.com/tag/ansible)
-  * Posts tagged with [ansible-core](https://forum.ansible.com/tag/ansible-core)
-  * Posts tagged with [playbook](https://forum.ansible.com/tag/playbook)
-* [Social Spaces](https://forum.ansible.com/c/chat/4): Meet and interact with fellow enthusiasts.
-* [News & Announcements](https://forum.ansible.com/c/news/5): Track project-wide announcements including social events.
-* [Bullhorn newsletter](https://docs.ansible.com/ansible/devel/community/communication.html#the-bullhorn): Get release announcements and important changes.
+### Установка и настройка окружения
 
-For more ways to get in touch, see [Communicating with the Ansible community](https://docs.ansible.com/ansible/devel/community/communication.html).
+1. Клонирование репозитория Ansible
+2. Создание виртуального окружения, установка зависимостей
+3. Настройка окружения для разработки
 
-## Contribute to Ansible
+### Разработка модуля
 
-* Check out the [Contributor's Guide](./.github/CONTRIBUTING.md).
-* Read [Community Information](https://docs.ansible.com/ansible/devel/community) for all
-  kinds of ways to contribute to and interact with the project,
-  including how to submit bug reports and code to Ansible.
-* Submit a proposed code update through a pull request to the `devel` branch.
-* Talk to us before making larger changes
-  to avoid duplicate efforts. This not only helps everyone
-  know what is going on, but it also helps save time and effort if we decide
-  some changes are needed.
+* Написан кастомный Ansible-модуль `my_own_module.py`, который создаёт файл с заданным содержимым по нужному пути
 
-## Coding Guidelines
+### Тестирование модуля
 
-We document our Coding Guidelines in the [Developer Guide](https://docs.ansible.com/ansible/devel/dev_guide/). We particularly suggest you review:
+* Проверена исполнимость модуля локально (с использованием переменной ANSIBLE\_MODULE\_ARGS и через playbook)
+* Проведён тест идемпотентности
 
-* [Contributing your module to Ansible](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_checklist.html)
-* [Conventions, tips, and pitfalls](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_best_practices.html)
+### Создание коллекции и роли
 
-## Branch Info
+* Инициализирована коллекция `my_own_namespace.yandex_cloud_elk`
+* Модуль помещён в коллекцию, реализована роль, использующая модуль с параметрами по умолчанию
+* Оформлена документация
+* Сделан git-тег и build tar.gz
 
-* The `devel` branch corresponds to the release actively under development.
-* The `stable-2.X` branches correspond to stable releases.
-* Create a branch based on `devel` and set up a [dev environment](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_general.html#common-environment-setup) if you want to open a PR.
-* See the [Ansible release and maintenance](https://docs.ansible.com/ansible/devel/reference_appendices/release_and_maintenance.html) page for information about active branches.
+### Тест установки и запуска коллекции
 
-## Roadmap
+* Коллекция установлена из локального архива через `ansible-galaxy collection install ...`
+* Запущен итоговый playbook — продемонстрирована работа роли и модуля
 
-Based on team and community feedback, an initial roadmap will be published for a major or minor version (ex: 2.7, 2.8).
-The [Ansible Roadmap page](https://docs.ansible.com/ansible/devel/roadmap/) details what is planned and how to influence the roadmap.
+---
 
-## Authors
+## Скриншоты (авторазметка)
 
-Ansible was created by [Michael DeHaan](https://github.com/mpdehaan)
-and has contributions from over 5000 users (and growing). Thanks everyone!
+### Установка зависимостей и настройка окружения
 
-[Ansible](https://www.ansible.com) is sponsored by [Red Hat, Inc.](https://www.redhat.com)
+![Установка зависимостей и env-setup](https://github.com/asad-bekov/my_own_collection/blob/main/img/1.PNG)
 
-## License
+### Первый запуск кастомного модуля через playbook
 
-GNU General Public License v3.0 or later
+![Первый запуск кастомного модуля (changed=1)](https://github.com/asad-bekov/my_own_collection/blob/main/img/2.PNG)
 
-See [COPYING](COPYING) to see the full text.
+### Проверка идемпотентности (повторный запуск playbook)
+
+![Проверка идемпотентности (changed=0)](https://github.com/asad-bekov/my_own_collection/blob/main/img/3.PNG)
+
+### Инициализация коллекции и структура
+
+![Структура коллекции](https://github.com/asad-bekov/my_own_collection/blob/main/img/4.PNG)
+
+### Пример итогового playbook для роли
+
+![Пример playbook для роли](https://github.com/asad-bekov/my_own_collection/blob/main/img/5.PNG)
+
+### Сборка архива коллекции
+
+![Сборка коллекции (build)](https://github.com/asad-bekov/my_own_collection/blob/main/img/6.PNG)
+
+### Установка коллекции из tar.gz
+
+![Установка коллекции из архива](https://github.com/asad-bekov/my_own_collection/blob/main/img/7.PNG)
+
+### Финальный запуск playbook из установленной коллекции
+
+![Финальный запуск playbook](https://github.com/asad-bekov/my_own_collection/blob/main/img/8.PNG)
+
+---
+
+## Ссылки на коллекцию и архив
+
+* [GitHub-репозиторий с коллекцией](https://github.com/asad-bekov//home/asad/my_own_collection/my_own_namespace/yandex_cloud_elk/README.md)
+* [Ссылка на архив коллекции .tar.gz](https://github.com/asad-bekov/my_own_collection/raw/main/my_own_namespace-yandex_cloud_elk-1.0.2.tar.gz)
+
+---
+
