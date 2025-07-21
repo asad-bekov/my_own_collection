@@ -36,7 +36,7 @@
 
 ## Установка
 
-`ansible-galaxy collection install <my_own_namespace>.tar.gz`
+`ansible-galaxy collection install my_own_namespace-yandex_cloud_elk-1.0.2.tar.gz`
 
 ## Автор
 Asad Asadbekov
