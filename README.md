@@ -97,7 +97,7 @@
 
 ## Ссылки на коллекцию и архив
 
-* [GitHub-репозиторий с коллекцией](https://github.com/asad-bekov//home/asad/my_own_collection/my_own_namespace/yandex_cloud_elk/README.md)
+* [GitHub-репозиторий с коллекцией](https://github.com/asad-bekov/my_own_collection/tree/main/my_own_namespace/yandex_cloud_elk)
 * [Ссылка на архив коллекции .tar.gz](https://github.com/asad-bekov/my_own_collection/raw/main/my_own_namespace-yandex_cloud_elk-1.0.2.tar.gz)
 
 ---
