@@ -36,7 +36,7 @@
 
 ## Установка
 
-`ansible-galaxy collection install <archive_name>.tar.gz`
+`ansible-galaxy collection install <my_own_namespace>.tar.gz`
 
 ## Автор
 Asad Asadbekov
