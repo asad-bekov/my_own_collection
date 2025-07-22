@@ -9,7 +9,7 @@ module: my_own_module
 
 short_description: Создаёт файл с заданным содержимым
 
-version_added: "1.0.0"
+version_added: "1.0.2"
 
 description: Модуль создаёт файл на удалённом хосте по указанному пути.
 
@@ -24,7 +24,7 @@ options:
         type: str
 
 author:
-    - Your Name (@yourGitHubHandle)
+    - Asadbek Asadbekov (@asad-bekov)
 '''
 
 EXAMPLES = r'''
